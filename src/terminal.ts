@@ -14,7 +14,6 @@ let lastCommandText: string;
 let activeTerminals: {[index: string]: vscode.Terminal} = {};
 
 const SPEC_TERMINAL_NAME = "Running Specs";
-const ZEUS_TERMINAL_NAME = "Zeus Start";
 
 vscode.window.onDidCloseTerminal((terminal: vscode.Terminal) => {
   if (activeTerminals[terminal.name]) {
@@ -25,36 +24,17 @@ vscode.window.onDidCloseTerminal((terminal: vscode.Terminal) => {
 export function runSpecFile(options: IOptions): void {
   let editor: vscode.TextEditor = vscode.window.activeTextEditor,
     path = vscode.workspace.asRelativePath(options.path || editor.document.fileName, false),
-    pattern = getTestFilePattern(),
+    pattern = "spec",
     fileName = toSpecPath(path, pattern);
 
   if (!editor || (!isSpecDirectory(fileName, pattern) && !isSpec(fileName, pattern) && !options.commandText)) {
     return;
   }
 
-  if (vscode.workspace.getConfiguration("ruby").get("specSaveFile")) {
+  if (vscode.workspace.getConfiguration("crystal").get("specSaveFile")) {
     vscode.window.activeTextEditor.document.save();
   }
-
-  let isZeusInit = isZeusActive() && !activeTerminals[getTerminalName(ZEUS_TERMINAL_NAME)];
-
-  if (isZeusInit) {
-    zeusTerminalInit();
-  }
-
-  if (isZeusInit) {
-    let interval = getZeusStartTimeout();
-
-    if (interval > 0) {
-      vscode.window.showInformationMessage("Starting Zeus ...");
-    }
-
-    setTimeout(() => {
-      executeInTerminal(fileName, options);
-    }, interval);
-  } else {
-    executeInTerminal(fileName, options);
-  }
+  executeInTerminal(fileName, options);
 }
 
 export function runLastSpec(): void {
@@ -75,7 +55,7 @@ function executeInTerminal(fileName: string, options: IOptions): void {
 }
 
 function executeCommand(specTerminal: vscode.Terminal, fileName: string, options: IOptions): void {
-  specTerminal.show(shouldFreserveFocus());
+  specTerminal.show(shouldPreserveFocus());
 
   let lineNumberText = options.lineNumber ? `:${options.lineNumber}` : "",
     commandText = options.commandText || `${getSpecCommand()} ${fileName}${lineNumberText}`;
@@ -104,49 +84,27 @@ function getOrCreateTerminal(prefix: string): vscode.Terminal {
 function getSpecCommand(): unknown {
   if (customSpecCommand()) {
     return customSpecCommand();
-  } else if (isZeusActive()) {
-    return "zeus test";
   } else {
-    return "bundle exec rspec";
+    return "crystal spec";
   }
 }
 
-function shouldFreserveFocus(): boolean {
-  return !vscode.workspace.getConfiguration("ruby").get("specFocusTerminal");
+function shouldPreserveFocus(): boolean {
+  return !vscode.workspace.getConfiguration("crystal").get("specFocusTerminal");
 }
 
 function shouldClearTerminal(): unknown {
-  return vscode.workspace.getConfiguration("ruby").get("specClearTerminal");
+  return vscode.workspace.getConfiguration("crystal").get("specClearTerminal");
 }
 
 function customSpecCommand(): unknown {
-  return vscode.workspace.getConfiguration("ruby").get("specCommand");
-}
-
-function isZeusActive(): unknown {
-  return vscode.workspace.getConfiguration("ruby").get("specGem") == "zeus";
-}
-
-function getTestFilePattern(): string {
-  return vscode.workspace.getConfiguration("ruby").get("specPattern");
-}
-
-function getZeusStartTimeout(): number {
-  return vscode.workspace.getConfiguration("ruby").get("zeusStartTimeout");
-}
-
-function zeusTerminalInit(): void {
-  const terminalName = getTerminalName(ZEUS_TERMINAL_NAME);
-  let zeusTerminal = vscode.window.createTerminal(terminalName);
-
-  activeTerminals[terminalName] = zeusTerminal;
-  zeusTerminal.sendText("zeus start");
+  return vscode.workspace.getConfiguration("crystal").get("specCommand");
 }
 
 function isSpec(fileName: string, pattern: string): boolean {
-  return fileName.indexOf(`_${pattern}.rb`) > -1;
+  return fileName.indexOf(`_${pattern}.cr`) > -1;
 }
 
 function isSpecDirectory(fileName: string, pattern: string): boolean {
-  return fileName.indexOf(pattern) > -1 && fileName.indexOf(".rb") == -1;
+  return fileName.indexOf(pattern) > -1 && fileName.indexOf(".cr") == -1;
 }

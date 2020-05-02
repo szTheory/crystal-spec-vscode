@@ -6,3 +6,4 @@ node_modules
 typings
 npm-debug.log*
 .vscode-test
+*.vsix
