@@ -25,7 +25,8 @@
     "onCommand:extension.runFileSpecs",
     "onCommand:extension.runSpecsFromMenu",
     "onCommand:extension.runSpecLine",
-    "onCommand:extension.runLastSpec"
+    "onCommand:extension.runLastSpec",
+    "onCommand:crystalSpecs.jumpToSpec"
   ],
   "main": "./out/src/extension",
   "contributes": {
@@ -49,6 +50,10 @@
       {
         "command": "extension.runLastSpec",
         "title": "Run Last Spec"
+      },
+      {
+        "command": "crystalSpecs.jumpToSpec",
+        "title": "Crystal: Jump to Spec File"
       }
     ],
     "keybindings": [
@@ -67,6 +72,12 @@
       {
         "command": "extension.runLastSpec",
         "key": "cmd+y"
+      },
+      {
+        "command": "crystalSpecs.jumpToSpec",
+        "key": "ctrl+shift+j",
+        "mac": "cmd+shift+j",
+        "when": "editorTextFocus && editorLangId == 'crystal'"
       }
     ],
     "menus": {

@@ -1,6 +1,6 @@
 import * as assert from "assert";
 
-import toSpecPath from "../../src/utils/toSpecPath";
+import {toSpecPath} from "../../src/utils/toSpecPath";
 
 suite("toSpecPath", () => {
   test("Converting shallow path", () => {

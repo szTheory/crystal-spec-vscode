@@ -33,6 +33,17 @@ export function activate(context: vscode.ExtensionContext): void {
   );
 
   context.subscriptions.push(vscode.commands.registerCommand("extension.runLastSpec", terminal.runLastSpec));
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand("crystalSpecs.runSpecLine", () => {
+      let currentPosition: vscode.Position = vscode.window.activeTextEditor.selection.active;
+      terminal.runSpecFile({lineNumber: currentPosition.line + 1});
+    })
+  );
+
+  // function openFile(file) {
+  //   return vscode.workspace.openTextDocument(vscode.Uri.file(file)).then(vscode.window.showTextDocument);
+  // }
 }
 
 // this method is called when your extension is deactivated

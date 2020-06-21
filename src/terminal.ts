@@ -2,7 +2,7 @@
 
 import * as vscode from "vscode";
 
-import toSpecPath from "./utils/toSpecPath";
+import {toSpecPath} from "./utils/toSpecPath";
 
 interface IOptions {
   path?: string;
