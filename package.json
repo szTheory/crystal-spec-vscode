@@ -54,19 +54,23 @@
     "keybindings": [
       {
         "command": "crystalSpecs.runAllSpecFiles",
-        "key": "cmd+r"
+        "key": "ctrl+r",
+        "mac": "cmd+r"
       },
       {
         "command": "crystalSpecs.runFileSpecs",
-        "key": "cmd+shift+t"
+        "key": "ctrl+shift+t",
+        "mac": "cmd+shift+t"
       },
       {
         "command": "crystalSpecs.runSpecLine",
-        "key": "cmd+l"
+        "key": "ctrl+l",
+        "mac": "cmd+l"
       },
       {
         "command": "crystalSpecs.runLastSpec",
-        "key": "cmd+y"
+        "key": "ctrl+y",
+        "mac": "cmd+y"
       }
     ],
     "menus": {
