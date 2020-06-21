@@ -4,7 +4,7 @@
   "description": "Run crystal spec",
   "version": "0.1.0",
   "publisher": "matthewmcgarvey",
-  "icon": "rspec.png",
+  "icon": "icon.png",
   "galleryBanner": {
     "color": "#232323",
     "theme": "dark"
