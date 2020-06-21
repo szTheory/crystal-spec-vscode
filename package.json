@@ -78,7 +78,7 @@
     "menus": {
       "explorer/context": [
         {
-          "command": "extension.runSpecsFromMenu",
+          "command": "crystalSpecs.runSpecsFromMenu",
           "group": "spec"
         }
       ]
