@@ -32,23 +32,23 @@
     "commands": [
       {
         "command": "extension.runAllSpecFiles",
-        "title": "Run All Spec Files"
+        "title": "Crystal: Run All Spec Files"
       },
       {
         "command": "extension.runFileSpecs",
-        "title": "Run File Specs"
+        "title": "Crystal: Run File Specs"
       },
       {
         "command": "extension.runSpecsFromMenu",
-        "title": "Run Specs"
+        "title": "Crystal: Run Specs"
       },
       {
         "command": "extension.runSpecLine",
-        "title": "Run Spec Line"
+        "title": "Crystal: Run Spec Line"
       },
       {
         "command": "extension.runLastSpec",
-        "title": "Run Last Spec"
+        "title": "Crystal: Run Last Spec"
       }
     ],
     "keybindings": [
