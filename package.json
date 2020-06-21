@@ -36,7 +36,8 @@
       },
       {
         "command": "crystalSpecs.runFileSpecs",
-        "title": "Crystal: Run File Specs"
+        "title": "Crystal: Run File Specs",
+        "when": "editorTextFocus && editorLangId == 'crystal'"
       },
       {
         "command": "crystalSpecs.runSpecsFromMenu",
@@ -44,7 +45,8 @@
       },
       {
         "command": "crystalSpecs.runSpecLine",
-        "title": "Crystal: Run Spec Line"
+        "title": "Crystal: Run Spec Line",
+        "when": "editorTextFocus && editorLangId == 'crystal'"
       },
       {
         "command": "crystalSpecs.runLastSpec",
