@@ -21,51 +21,51 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:extension.runAllSpecFiles",
-    "onCommand:extension.runFileSpecs",
-    "onCommand:extension.runSpecsFromMenu",
-    "onCommand:extension.runSpecLine",
-    "onCommand:extension.runLastSpec"
+    "onCommand:crystalSpecs.runAllSpecFiles",
+    "onCommand:crystalSpecs.runFileSpecs",
+    "onCommand:crystalSpecs.runSpecsFromMenu",
+    "onCommand:crystalSpecs.runSpecLine",
+    "onCommand:crystalSpecs.runLastSpec"
   ],
   "main": "./out/src/extension",
   "contributes": {
     "commands": [
       {
-        "command": "extension.runAllSpecFiles",
+        "command": "crystalSpecs.runAllSpecFiles",
         "title": "Crystal: Run All Spec Files"
       },
       {
-        "command": "extension.runFileSpecs",
+        "command": "crystalSpecs.runFileSpecs",
         "title": "Crystal: Run File Specs"
       },
       {
-        "command": "extension.runSpecsFromMenu",
+        "command": "crystalSpecs.runSpecsFromMenu",
         "title": "Crystal: Run Specs"
       },
       {
-        "command": "extension.runSpecLine",
+        "command": "crystalSpecs.runSpecLine",
         "title": "Crystal: Run Spec Line"
       },
       {
-        "command": "extension.runLastSpec",
+        "command": "crystalSpecs.runLastSpec",
         "title": "Crystal: Run Last Spec"
       }
     ],
     "keybindings": [
       {
-        "command": "extension.runAllSpecFiles",
+        "command": "crystalSpecs.runAllSpecFiles",
         "key": "cmd+r"
       },
       {
-        "command": "extension.runFileSpecs",
+        "command": "crystalSpecs.runFileSpecs",
         "key": "cmd+shift+t"
       },
       {
-        "command": "extension.runSpecLine",
+        "command": "crystalSpecs.runSpecLine",
         "key": "cmd+l"
       },
       {
-        "command": "extension.runLastSpec",
+        "command": "crystalSpecs.runLastSpec",
         "key": "cmd+y"
       }
     ],
